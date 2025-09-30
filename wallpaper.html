@@ -46,62 +46,57 @@
       </div>
     </nav>
     <main>
-      <section class="contact-section" id="contact">
-        <div class="contact-container">
-          <h2>Contact Us</h2>
-          <p>
-            Have questions, suggestions, or just want to say hi? We'd love to
-            hear from you!
-          </p>
-          <form id="contact-form" class="contact-form">
-            <!-- Form Fields -->
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="Enter your name"
-              />
+      <section class="image-gallery-section">
+        <h2 class="section-title">Wallpaper Anime Snaps</h2>
+
+        <div class="image-grid">
+          <div class="image-card">
+            <img
+              src="/assets/images/wallpaper/anisnap-cherry -blossoms-in-the foreground.jpg"
+              alt="cherry clossoms in the foreground"
+              class="preview-img"
+            />
+            <div class="overlay">
+              <a
+                href="/assets/images/wallpaper/anisnap-cherry -blossoms-in-the foreground.jpg"
+                download
+                class="download-btn"
+                >Download</a
+              >
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="Enter your email"
-              />
+          <div class="image-card">
+            <img
+              src="/assets/images/wallpaper/anisnap-waterfalls-pouring-into-the-clouds.jpg"
+              alt="waterfalls pouring into the clouds"
+              class="preview-img"
+            />
+            <div class="overlay">
+              <a
+                href="/assets/images/wallpaper/anisnap-waterfalls-pouring-into-the-clouds.jpg"
+                download
+                class="download-btn"
+                >Download</a
+              >
             </div>
-
-            <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                placeholder="Write your message..."
-              ></textarea>
-            </div>
-
-            <button type="submit" class="send-button">Send Message</button>
-
-            <!-- Spinner -->
-            <div id="spinner" class="spinner" style="display: none"></div>
-
-            <!-- Message -->
-            <p id="form-message" class="form-message"></p>
-          </form>
+          </div>
         </div>
       </section>
+
+      <!-- Modal -->
+      <div class="image-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-inner">
+          <img class="modal-content-img" />
+          <p class="modal-caption"></p>
+        </div>
+      </div>
     </main>
     <footer>
       <p>&copy 2025 Kagiso</p>
     </footer>
+    
     <script src="/dist/main.js"></script>
-  </body>
+    
 </html>

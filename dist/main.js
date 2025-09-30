@@ -1,76 +1,119 @@
-const images = ["./assets/images/image-2.png", "./assets/images/image-1.png"];
+// ========== Slideshow ==========
+const imageElement = document.getElementById("slideshow_image");
 
-let imageIndex = 0;
-const imageElement = document.getElementById("slideshow-image");
-let intervalId;
+if (imageElement) {
+  const images = ["./assets/images/image-2.png", "./assets/images/image-1.png"];
+  let imageIndex = 0;
+  let intervalId;
 
-function showImages() {
-  // Add fade-out class
-  imageElement.classList.add("fade-out");
+  function showImages() {
+    imageElement.classList.add("fade-out");
 
-  // Wait for fade-out, then switch image
-  setTimeout(() => {
-    imageIndex = (imageIndex + 1) % images.length;
-    imageElement.src = images[imageIndex];
-    imageElement.classList.remove("fade-out");
-  }, 500); // Half of the transition time
+    setTimeout(() => {
+      imageIndex = (imageIndex + 1) % images.length;
+      imageElement.src = images[imageIndex];
+      imageElement.classList.remove("fade-out");
+    }, 500);
+  }
+
+  function startSlideshow() {
+    intervalId = setInterval(showImages, 4000);
+  }
+
+  function stopSlideshow() {
+    clearInterval(intervalId);
+  }
+
+  window.addEventListener("load", () => {
+    startSlideshow();
+
+    imageElement.addEventListener("mouseenter", stopSlideshow);
+    imageElement.addEventListener("mouseleave", startSlideshow);
+  });
 }
 
-function startSlideshow() {
-  intervalId = setInterval(showImages, 4000); // 4s per slide
-}
-
-function stopSlideshow() {
-  clearInterval(intervalId);
-}
-
-// Start everything on page load
-window.addEventListener("load", () => {
-  startSlideshow();
-
-  // Pause on hover
-  imageElement.addEventListener("mouseenter", stopSlideshow);
-  imageElement.addEventListener("mouseleave", startSlideshow);
-});
-
-// Contact
-
+// ========== Contact Form ==========
 const form = document.getElementById("contact-form");
 const message = document.getElementById("form-message");
 const spinner = document.getElementById("spinner");
 
-form.addEventListener("submit", async function (e) {
-  e.preventDefault(); // Stop form reload
+if (form && message && spinner) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const formData = new FormData(form);
+    const formData = new FormData(form);
+    spinner.style.display = "block";
+    message.textContent = "";
 
-  // Show spinner and clear previous message
-  spinner.style.display = "block";
-  message.textContent = "";
+    try {
+      const res = await fetch(
+        "https://formsubmit.co/ajax/kgmokgobi@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
 
-  try {
-    const res = await fetch("https://formsubmit.co/ajax/kgmokgobi@gmail.com", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    });
+      const result = await res.json();
+      spinner.style.display = "none";
 
-    const result = await res.json();
-    spinner.style.display = "none";
-
-    if (res.ok) {
-      message.textContent = "✅ Message sent successfully!";
-      message.style.color = "green";
-      form.reset();
-    } else {
-      message.textContent = "❌ Failed to send. Try again later.";
-      message.style.color = "red";
+      if (res.ok) {
+        message.textContent = "✅ Message sent successfully!";
+        message.style.color = "green";
+        form.reset();
+      } else {
+        message.textContent = "❌ Failed to send. Try again later.";
+        message.style.color = "red";
+      }
+    } catch (error) {
+      spinner.style.display = "none";
+      message.textContent = "⚠️ Network error. Please try again.";
+      message.style.color = "orange";
     }
-  } catch (error) {
-    spinner.style.display = "none";
-    message.textContent = "⚠️ Network error. Please try again.";
-    message.style.color = "orange";
-  }
+  });
+}
+
+// ========== Image Zoom Modal ==========
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.querySelector(".image-modal");
+  const modalImg = document.querySelector(".modal-content-img");
+  const captionText = document.querySelector(".modal-caption");
+  const closeModal = document.querySelector(".close-modal");
+
+  if (!modal || !modalImg || !captionText || !closeModal) return;
+
+  // Open modal on image card click
+  document.querySelectorAll(".image-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const img = card.querySelector(".preview-img");
+      if (!img) return;
+
+      const caption = card.dataset.caption || img.alt || "";
+      modalImg.src = img.src;
+      captionText.textContent = caption;
+
+      modal.classList.add("active");
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+
+  // Prevent modal from opening on download click
+  document.querySelectorAll(".download-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
 });
