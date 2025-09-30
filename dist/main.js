@@ -118,6 +118,137 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const images = [
+    {
+      src: "/assets/images/scenes/anisnap-boy-holding-a-book.jpg",
+      alt: "Anime 1",
+      caption: "Sky Dream",
+    },
+    {
+      src: "/assets/images/seasonal/anisnap-ocean-waves-sundress.jpg",
+      alt: "Anime 2",
+      caption: "Night Train",
+    },
+    {
+      src: "/assets/images/scenes/anisnap-girl-silver-hair.jpg",
+      alt: "Anime 3",
+      caption: "Library Silence",
+    },
+    {
+      src: "/assets/images/scenes/anisnap-train-at-night.jpg",
+      alt: "Anime 4",
+      caption: "Streetlight Rain",
+    },
+    {
+      src: "/assets/images/wallpaper/anisnap-waterfalls-pouring-into-the-clouds.jpg",
+      alt: "Anime 5",
+      caption: "Mountain Spirit",
+    },
+    {
+      src: "/assets/images/scenes/anisnap-reflections-on-window.jpg",
+      alt: "Anime 6",
+      caption: "Blossom Wind",
+    },
+    {
+      src: "https://via.placeholder.com/400x300?text=10",
+      alt: "Anime 7",
+      caption: "Whispered Forest",
+    },
+    {
+      src: "https://via.placeholder.com/400x300?text=10",
+      alt: "Anime 8",
+      caption: "Sakura Lane",
+    },
+    {
+      src: "/assets/images/scenes/anisnap-girl-hair-and-headphones.jpg",
+      alt: "Anime 9",
+      caption: "City Window",
+    },
+  ];
+
+  const perPage = 6;
+  let currentPage = 1;
+
+  const grid = document.getElementById("paginated-image-grid");
+  const prevBtn = document.getElementById("prevPage");
+  const nextBtn = document.getElementById("nextPage");
+  const pageIndicator = document.getElementById("pageIndicator");
+
+  function renderPage() {
+    // Clear
+    grid.innerHTML = "";
+
+    // Calculate slice
+    const start = (currentPage - 1) * perPage;
+    const pageImages = images.slice(start, start + perPage);
+
+    // Create image cards
+    pageImages.forEach((img) => {
+      const card = document.createElement("div");
+      card.classList.add("image-card");
+      card.dataset.caption = img.caption;
+
+      card.innerHTML = `
+        <img src="${img.src}" alt="${img.alt}" class="preview-img" />
+        <div class="overlay">
+          <a href="${img.src}" download class="download-btn">Download</a>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+
+    pageIndicator.textContent = `Page ${currentPage}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage * perPage >= images.length;
+
+    // Re-bind zoom modal functionality
+    bindZoomEvents();
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPage();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentPage * perPage < images.length) {
+      currentPage++;
+      renderPage();
+    }
+  });
+
+  renderPage();
+});
+
+//make the website responsive for all devices
+document.addEventListener("DOMContentLoaded", function () {
+  const menuDiv = document.querySelector(".menu-div");
+  const navList = document.querySelector(".head-list");
+
+  menuDiv.addEventListener("click", () => {
+    navList.classList.toggle("active");
+  });
+
+  // Optional: dropdown click toggle on mobile
+  document.querySelectorAll(".list > a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (window.innerWidth <= 900) {
+        const parentLi = link.parentElement;
+
+        // If it has a dropdown
+        if (parentLi.querySelector(".drop-head-list")) {
+          e.preventDefault(); // prevent link navigation
+          parentLi.classList.toggle("active");
+        }
+      }
+    });
+  });
+});
+
 //prevent right clicking an image for coping it.
 document.addEventListener("contextmenu", function (e) {
   if (e.target.tagName === "IMG") {

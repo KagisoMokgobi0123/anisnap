@@ -9,7 +9,7 @@
   </head>
   <body>
     <nav>
-      <div class="menu-div" hidden><span></span></div>
+      <div class="menu-div" hidden><span></span><span></span><span></span></div>
       <div class="logo">
         <div class="logo-img"><img src="" alt="" /></div>
         <div class="logo-heading">
@@ -40,7 +40,7 @@
         </li>
         <li class="list"><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="log-and-search">
+      <div class="log-and-search" hidden>
         <div class="search-div"><i class="bi bi-search-heart"></i></div>
         <div class="log-div"><button class="log-button">Log in</button></div>
       </div>
@@ -67,6 +67,19 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- section for random images -->
+      <section class="image-gallery-section">
+        <h2 class="section-title">Featured Anime Art</h2>
+
+        <div id="paginated-image-grid" class="imag-grid"></div>
+
+        <div class="pagination-buttons">
+          <button id="prevPage" disabled>Previous</button>
+          <span id="pageIndicator">Page 1</span>
+          <button id="nextPage">Next</button>
         </div>
       </section>
     </main>
