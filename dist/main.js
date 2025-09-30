@@ -117,3 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+//prevent right clicking an image for coping it.
+document.addEventListener("contextmenu", function (e) {
+  if (e.target.tagName === "IMG") {
+    e.preventDefault();
+  }
+});
