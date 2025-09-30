@@ -2,7 +2,7 @@
 const imageElement = document.getElementById("slideshow_image");
 
 if (imageElement) {
-  const images = ["./assets/images/image-2.png", "./assets/images/image-1.png"];
+  const images = ["assets/images/image-2.png", "assets/images/image-1.png"];
   let imageIndex = 0;
   let intervalId;
 
@@ -121,32 +121,32 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   const images = [
     {
-      src: "/assets/images/scenes/anisnap-boy-holding-a-book.jpg",
+      src: "assets/images/scenes/anisnap-boy-holding-a-book.jpg",
       alt: "Anime 1",
       caption: "Sky Dream",
     },
     {
-      src: "/assets/images/seasonal/anisnap-ocean-waves-sundress.jpg",
+      src: "assets/images/seasonal/anisnap-ocean-waves-sundress.jpg",
       alt: "Anime 2",
       caption: "Night Train",
     },
     {
-      src: "/assets/images/scenes/anisnap-girl-silver-hair.jpg",
+      src: "assets/images/scenes/anisnap-girl-silver-hair.jpg",
       alt: "Anime 3",
       caption: "Library Silence",
     },
     {
-      src: "/assets/images/scenes/anisnap-train-at-night.jpg",
+      src: "assets/images/scenes/anisnap-train-at-night.jpg",
       alt: "Anime 4",
       caption: "Streetlight Rain",
     },
     {
-      src: "/assets/images/wallpaper/anisnap-waterfalls-pouring-into-the-clouds.jpg",
+      src: "assets/images/wallpaper/anisnap-waterfalls-pouring-into-the-clouds.jpg",
       alt: "Anime 5",
       caption: "Mountain Spirit",
     },
     {
-      src: "/assets/images/scenes/anisnap-reflections-on-window.jpg",
+      src: "assets/images/scenes/anisnap-reflections-on-window.jpg",
       alt: "Anime 6",
       caption: "Blossom Wind",
     },
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       caption: "Sakura Lane",
     },
     {
-      src: "/assets/images/scenes/anisnap-girl-hair-and-headphones.jpg",
+      src: "assets/images/scenes/anisnap-girl-hair-and-headphones.jpg",
       alt: "Anime 9",
       caption: "City Window",
     },
