@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Final Project</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Final-Project</title>
+
+    <link rel="stylesheet" href="dist/main.css" />
+  </head>
+  <body>
     <nav>
-      <span class="logo">Final Project</span>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+      <div class="menu-div" hidden><span></span></div>
+      <div class="logo">
+        <div class="logo-img"><img src="" alt="" /></div>
+        <div class="logo-heading">
+          <h3>AniSnap</h3>
+          <p>INSTANT ART</p>
+        </div>
+      </div>
+      <ul class="head-list">
+        <li class="list"><a href="index.html">Home</a></li>
+        <li class="list"><a href="about.html">About</a></li>
+        <li class="list">
+          <a href="">Browse</a>
+          <ul class="drop-head-list">
+            <li class="browse-list"><a href="">Latest</a></li>
+            <li class="browse-list"><a href="">Popular</a></li>
+            <li class="browse-list"><a href="">Seasonal</a></li>
+          </ul>
+        </li>
+        <li class="list">
+          <a href="">Collection</a>
+          <ul class="drop-head-list">
+            <li class="collection-list"><a href="">Categories</a></li>
+            <li class="collection-list"><a href="">Scenes</a></li>
+            <li class="collection-list"><a href="">Wallpaper</a></li>
+          </ul>
+        </li>
+        <li class="list"><a href="">Contact</a></li>
+      </ul>
+      <div class="log-and-search">
+        <div class="search-div"><i class="bi bi-search-heart"></i></div>
+        <div class="log-div"><button class="log-button">Log in</button></div>
+      </div>
     </nav>
-  </header>
-  <main>
-    <section class="hero">
-      <h1>Welcome to My Portfolio</h1>
-      <p>Discover my projects and skills.</p>
-      <button id="learnMoreBtn"><a href="projects.html">Learn more</a></button>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Kagiso</p>
-  </footer>
-  <script src="js/script.js"></script>
-</body>
+    <main>
+      <section class="hero-section">
+        <div class="slideshow">
+          <img
+            src="/assets/images/image-2.png"
+            alt="animated image"
+            id="slideshow-image"
+          />
+        </div>
+
+        <div class="overlays">
+          <div class="content">
+            <h1 class="site-title">AniSnap</h1>
+            <p class="tagline">Download Magic</p>
+            <div class="read-button">
+              <p class="read-more">read more</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy 2025 Kagiso</p>
+    </footer>
+    <script src="/dist/main.js"></script>
+  </body>
 </html>
