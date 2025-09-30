@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     navList.classList.toggle("active");
   });
 
-  // Optional: dropdown click toggle on mobile
+  
   document.querySelectorAll(".list > a").forEach((link) => {
     link.addEventListener("click", (e) => {
       if (window.innerWidth <= 900) {
